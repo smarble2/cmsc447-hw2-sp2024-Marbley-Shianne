@@ -1,4 +1,4 @@
-#!/Users/shimarbles/Desktop/447/CMSC447hw2/fl_venv/bin/python3.11
+#!/Users/shimarbles/Desktop/447/CMSC447hw2/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
