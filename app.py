@@ -13,3 +13,14 @@ app = Flask(__name__)
 def homePage():
     #calls my homepage.html file
     return render_template("homepage.html")
+
+@app.route('/form',methods=['GET', 'POST'])
+def form():
+    #This gets the data from the user input 
+    if request.method == 'POST':
+        name = request.form.get('name')
+        ID = request.form.get('ID')
+        points = request.form.get('Points')
+    # Using submit button to insert the info into the datbase
+        with sqlite3.connect("database.db") as user:
+            cur = user.cursor()
