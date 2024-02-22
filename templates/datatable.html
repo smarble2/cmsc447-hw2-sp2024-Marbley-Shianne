@@ -1,0 +1,40 @@
+<!--
+Author: Shianne Marbley
+File: datatable.html
+Description: Where the inputted data is stored in a table format
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset ="utf-8">
+        <style>
+            .datatable{
+                color: rgb(145, 141, 141);
+                text-decoration: underline;
+                text-align: center;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <!--Uses a forloop so that user inputed data goes to
+        the correct  places-->
+        <h1 class="datatable">Table Information</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>ID </th>
+                <th>Points</th>
+            </tr>
+            {%for user in data%}
+            <tr>
+                <td>{{user[0]}}</td>
+                <td>{{user[1]}}</td>
+                <td>{{user[2]}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        <button class="btn" type="button" onclick="window.location.href='/';">Back Home</button>
+    </body>
+</html>

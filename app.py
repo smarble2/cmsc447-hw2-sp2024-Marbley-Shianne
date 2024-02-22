@@ -8,19 +8,40 @@ import sqlite3
 app = Flask(__name__)
 
 #renders home page 
-
 @app.route("/")
 def homePage():
     #calls my homepage.html file
     return render_template("homepage.html")
 
+#this commits the inputted data then either goes back to the
+#homepage or if it doesn't work stays on the form page
 @app.route('/form',methods=['GET', 'POST'])
 def form():
-    #This gets the data from the user input 
+    #this gets the data from the user input 
     if request.method == 'POST':
-        name = request.form.get('name')
-        ID = request.form.get('ID')
-        points = request.form.get('Points')
-    # Using submit button to insert the info into the datbase
+        name = request.form['name']
+        ID = request.form['ID']
+        Points = request.form['Points']
+    #using submit button to insert the info into the datbase
         with sqlite3.connect("database.db") as user:
             cur = user.cursor()
+            cur.execute("INSERT INTO info \
+            (name,ID,Points) VALUES (?,?,?)",
+                            (name,ID,Points))
+            user.commit()
+        return render_template("homepage.html")
+    else:
+        return render_template("form.html")
+
+@app.route('/datatable')
+def datatable():
+    connected = sqlite3.connect('database.db')
+    cur = connected.cursor()
+    #select * shows all data from info 
+    cur.execute('SELECT * FROM info')
+
+    data = cur.fetchall()
+    return render_template("datatable.html", data = data)
+    
+if __name__ == '__main__':
+    app.run(debug=False)
