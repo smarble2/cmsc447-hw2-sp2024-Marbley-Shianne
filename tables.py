@@ -8,11 +8,12 @@ import sqlite3
 connected = sqlite3.connect('database.db') #connects to database.db file
 print("database.db connected successfully") #print statemnet for confirm
 
-#initialize table named info
+#INITIALIZE table named info
+
 connected.execute('CREATE TABLE info (name TEXT, id TEXT, points TEXT)')
 print("Table created successfully")#print statemnet for confirm
 
-#drop data table (clear all info)
+# DROP data table (clear all info)
 #connected.execute('DROP TABLE info') 
 #print("Table dropped successfully")#print statemnet for confirm
 

@@ -102,7 +102,7 @@ def delete():
         try:
             # Use the hidden in
             rowid = request.form['id']
-            #connect to the database
+            #connect to the database and use sql cmd to delete data 
             with sqlite3.connect('database.db') as conn:
                 cur = conn.cursor()
                 cur.execute("DELETE FROM info WHERE rowid= "+rowid) 
