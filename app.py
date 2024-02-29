@@ -42,7 +42,7 @@ def datatable():
     connected = sqlite3.connect('database.db')
     cur = connected.cursor()
     #select * shows all data from info 
-    cur.execute('SELECT * FROM info')
+    cur.execute('SELECT rowid,* FROM info')
 
     data = cur.fetchall()
     return render_template("datatable.html", data = data) #used in datatables.html for loop user in data 
