@@ -90,9 +90,10 @@ def editInfo():
 
                 conn.commit()
         except:
+            #if failure revert back to original data before chnages
             conn.rollback()
         finally:
-            return render_template('homepage.html')
+            return redirect(url_for('datatable')) 
         
 #delete operation
 @app.route("/delete", methods =['POST', 'GET'])
@@ -110,10 +111,11 @@ def delete():
                 conn.commit()
         
         except:
+            #if failure revert back to original data before chnages
             conn.rollback()
 
         finally:
-            return render_template('homepage.html') 
+            return redirect(url_for('datatable')) 
 
 
 if __name__ == '__main__':

@@ -36,14 +36,16 @@ fill out to change info
         <form action="{{ url_for('editInfo') }}" method="POST">
             <h2 style="color:blue">Row #: {{d[0]}}</h2><br>
             <input type="hidden" name="rowid" value="{{ d[0] }}">
-            Enter Name: <input type="text" name="name" value="{{d[1]}}" /><br>
+            Enter Name: <input type="text" name="name" value="{{d[1]}}" /><br><br/>
 
-            Enter ID: <input type="text" name="ID" value="{{d[2]}}" /><br>
+            Enter ID: <input type="text" name="ID" value="{{d[2]}}" /><br><br/>
 
-            Enter Points: <input type="text" name="Points" value="{{d[3]}}" /><br>
+            Enter Points: <input type="text" name="Points" value="{{d[3]}}" /><br><br/>
 
-            <input type="submit" value="Submit Changes" />
-            <button class="btn" type="button" onclick="window.location.href='/';">Back Home</button>
+            <input type="submit" value="Submit Changes" 
+            style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;"/>
+            <button class="btn" type="button" onclick="window.location.href='/';"
+            style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;">Back Home</button>
         </form>
         {% endfor %}
     </body>

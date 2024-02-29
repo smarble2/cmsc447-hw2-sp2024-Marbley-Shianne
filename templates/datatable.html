@@ -12,13 +12,14 @@ Description: Where the inputted data is stored in a table format
                 color: rgb(83, 80, 80);
                 text-decoration: underline;
                 text-align: center;
+                font-family:'Times New Roman', Times, serif;
             }
-            table{
-                /**/
-                
+            table{ 
                 text-align: center;
                 border-collapse: collapse;
-                width: 100%;  
+                width: 100%; 
+                font-family:'Times New Roman', Times, serif;
+                font-size: 18px;
 
             }
             td, tr{
@@ -64,12 +65,16 @@ Description: Where the inputted data is stored in a table format
                 <td>{{d[2]}}</td>
                 <td>{{d[3]}}</td>
                 <!--If tthis doesnt work uncommenr edit button-->
-                <td><form action="{{url_for('edit')}}" method="POST"><input type="hidden" name="id" value="{{ d[0] }}"><input type="submit" value="Edit"></form> </td>
+                <td><form action="{{url_for('edit')}}" method="POST"><input type="hidden" name="id" value="{{ d[0] }}"><input type="submit" value="Edit"
+                    style="background-color:rgb(219, 223, 222); border-radius:5px; border-width: thin; font-size:15px;"></form> </td>
                 <!--<td class="edit"><button class="btn" type="button">Edit</button></td>-->
-                <td><form action="{{url_for('delete')}}" method="POST"><input type="hidden" name="id" value="{{ d[0] }}"><input type="submit" value="Delete"></form> </td>
+                <td><form action="{{url_for('delete')}}" method="POST"><input type="hidden" name="id" value="{{ d[0] }}"><input type="submit" value="Delete" 
+                    style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;"></form> </td>
             </tr>
             {%endfor%}
         </table>
-        <button class="btn" type="button" onclick="window.location.href='/';">Back Home</button>
+        <br>
+        <button class="btn" type="button" onclick="window.location.href='/';"
+        style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;">Back Home</button>
     </body>
 </html>

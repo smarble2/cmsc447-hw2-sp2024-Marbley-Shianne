@@ -28,13 +28,15 @@ fill out their information  and submit
         <h1 class="formPage">Form Page</h1>
         <form class="forms" action="{{ url_for('form') }}" method="POST">
             <label>Enter Name:</label>
-            <input type="text" name="name" placeholder="Enter name" value="{{ request.form['name']}}" required><br/>
+            <input type="text" name="name" placeholder="Enter name" value="{{ request.form['name']}}" required><br/><br/>
             <label>Enter ID:</label>
-            <input type="text" name="ID" placeholder="Enter ID" value="{{ request.form['ID']}}" required><br/>
+            <input type="text" name="ID" placeholder="Enter ID" value="{{ request.form['ID']}}" required><br/><br/>
             <label>Enter Points :</label>
-            <input type="text" name="Points" placeholder="Enter Points" value="{{ request.form['Points']}}" required><br/>
-            <input type = "submit" value="submit"/>
-            <button class="btn" type="button" onclick="window.location.href='/';">Back Home</button>
+            <input type="text" name="Points" placeholder="Enter Points" value="{{ request.form['Points']}}" required><br/><br/>
+            <input type = "submit" value="submit"
+            style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;"/>
+            <button class="btn" type="button" onclick="window.location.href='/';"
+            style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;">Back Home</button>
         </form>
         
 
