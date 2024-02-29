@@ -26,21 +26,19 @@ fill out their information  and submit
     </head>
     <body>
         <h1 class="formPage">Edit Record Form</h1>
-        {%for user in data%}
-        <form method="POST">
-            <h2 name="name" placeholder="Name">{{ request.form['name'] or user['name']}}</h2><br>
+        {%for d in data%}
+        <form action="{{ url_for('editInfo') }}" method="POST">
+            <h2 style="color:blue">Row #: {{d[0]}}</h2><br>
+            <input type="hidden" name="rowid" value="{{ d[0] }}">
+            Enter Name: <input type="text" name="name" value="{{d[1]}}" /><br>
 
-            <label>Enter ID:</label>
-            <input type="text" name="ID" placeholder="Enter New ID"
-            value="{{ request.form['ID'] or user['ID']}}"></input><br>
+            Enter ID: <input type="text" name="ID" value="{{d[2]}}" /><br>
 
-            <label>Enter Points :</label>
-            <input type="text" name="Points" placeholder="Enter New Points"
-            value="{{ request.form['Points'] or user['Points']}}"></input><br>
+            Enter Points: <input type="text" name="Points" value="{{d[3]}}" /><br>
 
-            <button type="submit">Submit Changes</button>
+            <input type="submit" value="Submit Changes" />
             <button class="btn" type="button" onclick="window.location.href='/';">Back Home</button>
         </form>
-        <!--{%endfor%}-->
+        {% endfor %}
     </body>
 </html>

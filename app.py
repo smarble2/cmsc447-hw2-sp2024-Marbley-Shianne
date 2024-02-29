@@ -39,14 +39,60 @@ def form():
 #view the entire datatable
 @app.route('/datatable')
 def datatable():
+    #access rows inside the table
     connected = sqlite3.connect('database.db')
+    connected.row_factory = sqlite3.Row
+
     cur = connected.cursor()
-    #select * shows all data from info 
+    #select * shows all data from info
+    #rowid is a predefined thing by sqlite3 
     cur.execute('SELECT rowid,* FROM info')
 
     data = cur.fetchall()
+    connected.close()
+    #send results of the SELECT to the datatable.html
     return render_template("datatable.html", data = data) #used in datatables.html for loop user in data 
 
+#Route will use the specific row then load edit form
+@app.route("/edit", methods=['POST','GET'])
+def edit():
+    if request.method == 'POST':
+        try:
+            #use hidden id from d[0] == rowid
+            id = request.form['id']
+            connected = sqlite3.connect("database.db")
+            connected.row_factory = sqlite3.Row
+
+            cur = connected.cursor()
+            cur.execute("SELECT rowid, * FROM info WHERE rowid = " + id)
+
+            data = cur.fetchall()
+        except:
+            id=None
+        finally:
+            #send row to edit form
+            return render_template("edit.html",data = data) #data from the SELECT 
+        
+#update to actuallky update the datatable
+@app.route("/editInfo",methods=['POST','GET']) 
+def editInfo():
+    # data will be from the post submitted by the form
+    if request.method == 'POST':
+        try:
+            rowid = request.form['rowid'] 
+            name = request.form['name']
+            ID = request.form['ID']
+            Points = request.form['Points']
+
+            with sqlite3.connect('database.db') as conn:
+                cur = conn.cursor()
+                cur.execute("UPDATE info SET name='"+name+"', ID ='"+ID+"', Points='"+Points+"' WHERE rowid ="+rowid)
+
+                conn.commit()
+        except:
+            conn.rollback()
+        finally:
+            return render_template('homepage.html')
 
     
 if __name__ == '__main__':
