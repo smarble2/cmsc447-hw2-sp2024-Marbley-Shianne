@@ -49,20 +49,22 @@ Description: Where the inputted data is stored in a table format
         <h1 class="datatable">Table Information</h1>
         <table>
             <tr>
+                <th><strong>Row #</strong></th>
                 <th><strong>Name</strong></th>
                 <th><strong>ID</strong> </th>
                 <th><strong>Points</strong></th>
                 <th><strong>Edit</strong></th>
                 <th><strong>Delete</strong></th>
             </tr>
-            {%for user in data%}
+            {%for d in data%}
             <tr>
-                <td>{{user[0]}}</td>
-                <td>{{user[1]}}</td>
-                <td>{{user[2]}}</td>
-                
-                <td class="edit"><button class="btn" type="button">Edit</button></td>
-                
+                <td>{{d["rowid"]}}</td>
+                <td>{{d["name"]}}</td>
+                <td>{{d["ID"]}}</td>
+                <td>{{d["Points"]}}</td>
+                <!--If tthis doesnt work uncommenr edit button-->
+                <td><form action="{{url_for('edit')}}" method="POST"><input type="hidden" name="id" value="{{ row['rowid'] }}"><input type="submit" value="Edit"></form> </td>
+                <!--<td class="edit"><button class="btn" type="button">Edit</button></td>-->
                 <td class="delete"><button class="btn" type="button">Delete</button></td>
             </tr>
             {%endfor%}
