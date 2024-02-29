@@ -6,5 +6,9 @@
 #Also for mac users turn off your airplay reciver or else it will not let you access app using routing number
 #6 to access the datatable we must run the tables.py first or
 #else our application will not work and we will get an error 
-#7 run tbales.py by typing "python tables.py" if successful there will be a terminal message
-#8
+#7 run tables.py by typing "python tables.py" if successful there will be a terminal message
+#8 once #7 is complete your database will be created and ready to be used
+#9 run the flask app by typing "python -m flask run"
+#You will see a WARNING message and an IP and port number
+#10 hold the command button and click the http link in the terminal to launch the app
+#11 when done close the app on your web server and it CTRL c to end program
