@@ -65,7 +65,7 @@ Description: Where the inputted data is stored in a table format
                 <!--If tthis doesnt work uncommenr edit button-->
                 <td><form action="{{url_for('edit')}}" method="POST"><input type="hidden" name="id" value="{{ d[0] }}"><input type="submit" value="Edit"></form> </td>
                 <!--<td class="edit"><button class="btn" type="button">Edit</button></td>-->
-                <td class="delete"><button class="btn" type="button">Delete</button></td>
+                <td><form action="{{url_for('delete')}}" method="POST"><input type="hidden" name="id" value="{{ d[0] }}"><input type="submit" value="Delete"></form> </td>
             </tr>
             {%endfor%}
         </table>

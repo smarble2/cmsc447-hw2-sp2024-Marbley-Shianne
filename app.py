@@ -93,7 +93,27 @@ def editInfo():
             conn.rollback()
         finally:
             return render_template('homepage.html')
+        
+#delete operation
+@app.route("/delete", methods =['POST', 'GET'])
+def delete():
 
-    
+    if request.method == 'POST':
+        try:
+            # Use the hidden in
+            rowid = request.form['id']
+            #connect to the database
+            with sqlite3.connect('database.db') as conn:
+                cur = conn.cursor()
+                cur.execute("DELETE FROM info WHERE rowid= "+rowid) 
+
+                conn.commit()
+        
+        except:
+            conn.rollback()
+
+        finally:
+            return render_template('homepage.html') 
+
 if __name__ == '__main__':
     app.run(debug=False)
