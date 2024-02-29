@@ -1,0 +1,10 @@
+#1 create a .venv 
+#2 go to top of your screen and click on "View" tab 
+#3 click "Command Palette" 
+#4 open a new bash terminal"
+#5 make sure in your terminal there is a (.venv) at the begining
+#Also for mac users turn off your airplay reciver or else it will not let you access app using routing number
+#6 to access the datatable we must run the tables.py first or
+#else our application will not work and we will get an error 
+#7 run tbales.py by typing "python tables.py" if successful there will be a terminal message
+#8

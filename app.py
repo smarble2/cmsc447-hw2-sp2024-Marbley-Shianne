@@ -1,8 +1,11 @@
+#Author: Shianne Marbley
+#Description: Flask app that controls the functionality of the app
+
 #HUGE NOTE FOR MAC USERS YOU WILL GET A 403 ERROR WHEN YOU
 #RUN THIS SCRIPT IN ORDER TO VIEW TURN OFF YOUR airplay reciever and reload the page
 from flask import Flask
 from flask import render_template
-from flask import request
+from flask import request, redirect,url_for
 import sqlite3
 
 app = Flask(__name__)
@@ -25,14 +28,15 @@ def form():
     #using submit button to insert the info into the datbase
         with sqlite3.connect("database.db") as user:
             cur = user.cursor()
-            cur.execute("INSERT INTO info \
-            (name,ID,Points) VALUES (?,?,?)",
-                            (name,ID,Points))
+            cur.execute('INSERT INTO info (name,ID,Points) VALUES (?,?,?)',(name,ID,Points))
             user.commit()
-        return render_template("homepage.html")
+         #data is inputted so it should be on the datatable   
+        return redirect((url_for('datatable')))
     else:
+        #otherwise reload the form page
         return render_template("form.html")
-
+    
+#view the entire datatable
 @app.route('/datatable')
 def datatable():
     connected = sqlite3.connect('database.db')
@@ -41,7 +45,9 @@ def datatable():
     cur.execute('SELECT * FROM info')
 
     data = cur.fetchall()
-    return render_template("datatable.html", data = data)
+    return render_template("datatable.html", data = data) #used in datatables.html for loop user in data 
+
+
     
 if __name__ == '__main__':
     app.run(debug=False)

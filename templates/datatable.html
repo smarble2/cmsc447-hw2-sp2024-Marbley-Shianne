@@ -15,6 +15,8 @@ Description: Where the inputted data is stored in a table format
             }
             table{
                 /**/
+                
+                text-align: center;
                 border-collapse: collapse;
                 width: 100%;  
 
@@ -22,11 +24,20 @@ Description: Where the inputted data is stored in a table format
             td, tr{
                 /* creates the line between each entry*/
                 border-bottom: 1px solid #0b0b0b;
+                border-left: 1px solid #0b0b0b;
                 padding: 8px;
                 text-align: left;
             }
+            th{
+                border-top: 1px solid #0b0b0b;
+                border-left: 1px solid #0b0b0b;
+            }
+
             body{
                 background-color: rgb(210, 231, 246);
+            }
+            .delete{
+                border-right: 1px solid #0b0b0b;
             }
 
         </style>
@@ -38,15 +49,21 @@ Description: Where the inputted data is stored in a table format
         <h1 class="datatable">Table Information</h1>
         <table>
             <tr>
-                <th>Name</th>
-                <th>ID </th>
-                <th>Points</th>
+                <th><strong>Name</strong></th>
+                <th><strong>ID</strong> </th>
+                <th><strong>Points</strong></th>
+                <th><strong>Edit</strong></th>
+                <th><strong>Delete</strong></th>
             </tr>
             {%for user in data%}
             <tr>
                 <td>{{user[0]}}</td>
                 <td>{{user[1]}}</td>
                 <td>{{user[2]}}</td>
+                
+                <td class="edit"><button class="btn" type="button">Edit</button></td>
+                
+                <td class="delete"><button class="btn" type="button">Delete</button></td>
             </tr>
             {%endfor%}
         </table>
