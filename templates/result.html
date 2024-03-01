@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            table{ 
+                text-align: center;
+                border-collapse: collapse;
+                width: 100%; 
+                font-family:'Times New Roman', Times, serif;
+                font-size: 18px;
+
+            }
+            td, tr{
+                /* creates the line between each entry*/
+                border-bottom: 1px solid #0b0b0b;
+                border-left: 1px solid #0b0b0b;
+                border-right: 1px solid #0b0b0b;
+                padding: 8px;
+                text-align: left;
+            }
+            th{
+                color: blue;
+                border-top: 1px solid #0b0b0b;
+                border-left: 1px solid #0b0b0b;
+            }
+
+            body{
+                background-color: rgb(210, 231, 246);
+            }
+            h1{
+                color: blue;
+            }
+            p{
+                color: red;
+                font-weight: bold;
+                font-size: 30px;
+            }
+
+            </style>
+            
+        <title>Search Results</title>
+    </head>
+    <body>
+        <h1>Results for "{{ item }}"</h1>
+        
+        {% if data %}
+        <table>
+            <tr>
+                <th><strong>Name</strong></th>
+                <th><strong>ID</strong> </th>
+                <th><strong>Points</strong></th>
+            </tr>
+            {%for d in data%}
+            <tr>
+                <td>{{d[1]}}</td>
+                <td>{{d[2]}}</td>
+                <td>{{d[3]}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        <br>
+        {% else %}
+            <p>No results based on search</p>
+        {% endif %}
+        <button class="btn" type="button" onclick="window.location.href='/';"
+            style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;">Home</button>
+            <button class="btn" type="button" onclick="window.location.href='/datatable';"
+            style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;">Back</button>
+    </body>
+</html>

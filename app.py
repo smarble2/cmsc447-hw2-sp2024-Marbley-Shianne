@@ -1,5 +1,5 @@
 #Author: Shianne Marbley
-#Description: Flask app that controls the functionality of the app
+#Description: Flask app that controls the functionality of CRUD operations
 
 #HUGE NOTE FOR MAC USERS YOU WILL GET A 403 ERROR WHEN YOU
 #RUN THIS SCRIPT IN ORDER TO VIEW TURN OFF YOUR airplay reciever and reload the page
@@ -84,6 +84,7 @@ def editInfo():
             ID = request.form['ID']
             Points = request.form['Points']
 
+            #connect to database and execute sql statement
             with sqlite3.connect('database.db') as conn:
                 cur = conn.cursor()
                 cur.execute("UPDATE info SET name='"+name+"', ID ='"+ID+"', Points='"+Points+"' WHERE rowid ="+rowid)
@@ -101,7 +102,7 @@ def delete():
 
     if request.method == 'POST':
         try:
-            # Use the hidden in
+            #use the hidden in
             rowid = request.form['id']
             #connect to the database and use sql cmd to delete data 
             with sqlite3.connect('database.db') as conn:
@@ -116,7 +117,25 @@ def delete():
 
         finally:
             return redirect(url_for('datatable')) 
+        
+#search operation
+@app.route("/search", methods=['POST', 'GET'])
+def search():
+    try:
+        #get the item from the form
+        item = request.form['item']
+         #connect to the database and use sql cmd to search data 
+        with sqlite3.connect('database.db') as conn:
+                conn.row_factory = sqlite3.Row
+                cur = conn.cursor()
 
+                #will not work unless PQ are used in this format
+                cur.execute("SELECT rowid, * FROM info WHERE name LIKE ?", ('%' + item + '%',))
+                data = cur.fetchall()
+    except:
+        data = None
+    finally:
+         return render_template("result.html", data = data, item = item)
 
 if __name__ == '__main__':
     app.run(debug=False)

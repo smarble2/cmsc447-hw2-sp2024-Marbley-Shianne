@@ -26,6 +26,7 @@ Description: Where the inputted data is stored in a table format
                 /* creates the line between each entry*/
                 border-bottom: 1px solid #0b0b0b;
                 border-left: 1px solid #0b0b0b;
+                border-right: 1px solid #0b0b0b;
                 padding: 8px;
                 text-align: left;
             }
@@ -40,6 +41,7 @@ Description: Where the inputted data is stored in a table format
             }
             .delete{
                 border-right: 1px solid #0b0b0b;
+                
             }
 
         </style>
@@ -48,10 +50,17 @@ Description: Where the inputted data is stored in a table format
     <body>
         <!--Uses a forloop so that user inputed data goes to
         the correct  places-->
+        <form action="{{url_for('search')}}" method="POST">
+            <label><strong>Search Datatable</strong></label>
+            <input type="text" id="item" name="item">
+            <button type="submit">search</button>
+        </form>
         <h1 class="datatable">🔍 Data Table 📊</h1>
+        <h2>Directions: To update information click the Edit button on the user you<br>would like to change.
+        To delete a user of your choosing hit the Delete button.</h2>
         <table>
             <tr>
-                <th><strong>Row #</strong></th>
+                
                 <th><strong>Name</strong></th>
                 <th><strong>ID</strong> </th>
                 <th><strong>Points</strong></th>
@@ -60,14 +69,14 @@ Description: Where the inputted data is stored in a table format
             </tr>
             {%for d in data%}
             <tr>
-                <td>{{d[0]}}</td>
+
                 <td>{{d[1]}}</td>
                 <td>{{d[2]}}</td>
                 <td>{{d[3]}}</td>
-                <!--If tthis doesnt work uncommenr edit button-->
+                
                 <td><form action="{{url_for('edit')}}" method="POST"><input type="hidden" name="id" value="{{ d[0] }}"><input type="submit" value="Edit"
                     style="background-color:rgb(219, 223, 222); border-radius:5px; border-width: thin; font-size:15px;"></form> </td>
-                <!--<td class="edit"><button class="btn" type="button">Edit</button></td>-->
+                
                 <td><form action="{{url_for('delete')}}" method="POST"><input type="hidden" name="id" value="{{ d[0] }}"><input type="submit" value="Delete" 
                     style="background-color:rgb(219, 223, 222); border-radius:5px; border-width:thin; font-size:15px;"></form> </td>
             </tr>
