@@ -1,3 +1,4 @@
+TA AND PROFESSOR PLEASE READ!!!NOTE THERE ARE TWO NAMES shiannemarbles and smarble2 in this repo, they are both me, Shianne Marbley, because for some reason my vscode won't allow me to directly commit/connect to my smarble2 github account so I have been using my personal github to commit changes and program daily!!!
 DIRECTIONS: 
 
 #1 create a .venv (if not already done so)
