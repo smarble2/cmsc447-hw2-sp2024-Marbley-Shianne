@@ -1,3 +1,5 @@
+DIRECTIONS: 
+
 #1 create a .venv (if not already done so)
     #1a go to the top of VScode / your IDE and click the "View" tab
     #2a click "Command Palette"
